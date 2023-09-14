@@ -1,0 +1,46 @@
+@model ChefsN.Models.Chef
+
+@{
+    ViewData["Title"] = "Create Chef";
+}
+
+<style>
+    body {
+        background-color:  darkgrey;
+    }
+</style>
+
+<div class="container">
+    <div class="text-center">
+        <h3>
+            <a asp-controller="Chef" asp-action="Dashboard">Chefs</a>
+            |
+            <a asp-controller="Dish" asp-action="Dashboard">Dishes</a>
+            |
+            <a asp-controller="Chef" asp-action="NewChef">Add a Chef</a>
+            |
+            <a asp-controller="Dish" asp-action="NewDish">Add a Dish</a>
+        </h3>
+    </div>
+    
+    <h1>Add a Chef</h1>
+    <form asp-controller="Chef" asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="FirstName">First Name:</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName">Last Name:</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOfBirth">Date of Birth:</label>
+            <input asp-for="DateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add a Chef</button>
+    </form>
+    
+</div>

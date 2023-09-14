@@ -1,0 +1,60 @@
+@model List<Chef>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    body {
+        background-color: darkgrey;
+    }
+</style>
+
+<div class="container">
+    <div class="text-center">
+        <div class="container">
+            <div class="text-center">
+
+
+            </div>
+            <h3>
+                <a asp-controller="Chef" asp-action="Dashboard">Chefs</a>
+                |
+                <a asp-controller="Dish" asp-action="Dashboard">Dishes</a>
+                |
+                <a asp-controller="Chef" asp-action="NewChef">Add a Chef</a>
+                |
+                <a asp-controller="Dish" asp-action="NewDish">Add a Dish</a>
+            </h3>
+        </div><br> <br>
+
+        <h1 class="display-4"> 🧑🏾‍🍳👩🏿‍🍳 Check out our roster of chefs! 👩🏾‍🍳🧑🏿‍🍳 </h1>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3"> <br> <br> <br>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th># of Dishes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Chef chef in Model)
+                {
+
+                    <tr>
+                        <td>@chef.FirstName @chef.LastName</td>
+                        <td>@chef.Age()</td>
+                        <td>@chef.Dishes.Count</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

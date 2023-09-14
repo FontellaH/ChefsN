@@ -1,0 +1,60 @@
+@model ChefsN.Models.Dish
+
+@{
+    ViewData["Title"] = "Create Dish";
+}
+
+<style>
+    body {
+        background-color: darkgrey;
+    }
+</style>
+
+<div class="container">
+    <div class="text-center">
+        <h3>
+            <a asp-controller="Chef" asp-action="Dashboard">Chefs</a>
+            |
+            <a asp-controller="Dish" asp-action="Dashboard">Dishes</a>
+            |
+            <a asp-controller="Chef" asp-action="NewChef">Add a Chef</a>
+            |
+            <a asp-controller="Dish" asp-action="NewDish">Add a Dish</a>
+        </h3>
+
+        <h1>Add a Dish</h1>
+        <h1>🍽️</h1>
+    </div>
+
+    <form asp-controller="Dish" asp-action="CreateDish" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Name">Name of Dish:</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Calories"># of Calories:</label>
+                <input asp-for="Calories" class="form-control" />
+                <span asp-validation-for="Calories" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="ChefID">Chef Name:</label>
+                <select asp-for="ChefID" class="form-control">
+                    <option value="">Select a Chef</option>
+                </select>
+                <span asp-validation-for="ChefID" class="text-danger"></span>
+            </div> <br> <br> <br>
+
+            <div class="form-group col-md-4">
+                <label asp-for="Tastiness">Tastiness:</label>
+                <input asp-for="Tastiness" class="form-control" />
+                <span asp-validation-for="Tastiness" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add a Dish</button>
+    </form>
+</div>

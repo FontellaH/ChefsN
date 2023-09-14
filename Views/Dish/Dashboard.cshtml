@@ -1,0 +1,66 @@
+@model List<Dish>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    body {
+        background-color: darkgrey;
+    }
+</style>
+
+<div class="container">
+    <div class="text-center">
+        <div class="container">
+            <div class="text-center">
+
+
+            </div>
+            <h3>
+                <a asp-controller="Chef" asp-action="Dashboard">Chefs</a>
+                |
+                <a asp-controller="Dish" asp-action="Dashboard">Dishes</a>
+                |
+                <a asp-controller="Chef" asp-action="NewChef">Add a Chef</a>
+                |
+                <a asp-controller="Dish" asp-action="NewDish">Add a Dish</a>
+            </h3>
+        </div><br> <br>
+
+        <h1 class="display-4"> 🍽️ Yum! Check out our tasty dishes! 🍽️ </h1>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3"> <br> <br> <br>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Chef</th>
+                    <th>Tastiness</th>
+                    <th>Calories</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dish in Model)
+                {
+                    <tr>
+                        <td>@dish.Name</td>
+                        <td>
+                            <select asp-for="@dish.ChefID"
+                                asp-items="@(new SelectList(ViewBag.Chefs, "ChefID", "FirstName"))">
+                                <option value="">Select Chef</option>
+                            </select>
+                        </td>
+                        <td>@dish.Tastiness</td>
+                        <td>@dish.Calories</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
